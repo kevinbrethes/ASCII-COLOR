@@ -22,14 +22,14 @@ func returnCharacterLine(text string, ascii []string) []string { //return an arr
 	return lineToReturn
 }
 
-func PrintTextInAscii(text string, ascii []string) {
+func PrintTextInAscii(text string, ascii []string, color string) {
 	characters := returnCharacterLine(text, ascii)
 
 	for i := 0; i < 8; i++ {
-		fmt.Print(characters[i])
+		fmt.Print(color, characters[i])
 		j := 8
 		for i+j < len(characters) {
-			fmt.Print(characters[i+j])
+			fmt.Print(color, characters[i+j])
 			j += 8
 		}
 		fmt.Println()

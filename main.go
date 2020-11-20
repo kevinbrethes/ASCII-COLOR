@@ -9,9 +9,10 @@ import (
 	"log"
 	"os"
 
-	ascii "../ASCII-ART/utils/ascii_convert"
-	backline "../ASCII-ART/utils/backlineSupport"
-	errors "../ASCII-ART/utils/errors"
+	ascii "../ASCII-COLOR/utils/ascii_convert"
+	backline "../ASCII-COLOR/utils/backlineSupport"
+	color "../ASCII-COLOR/utils/color"
+	errors "../ASCII-COLOR/utils/errors"
 )
 
 func scanLines(path string) ([]string, error) { //put each lines of the txt file in an array
@@ -41,6 +42,8 @@ func main() {
 
 	text := os.Args[1]
 
+	color := color.Choice(os.Args[1:])
+
 	lines, err := scanLines("./standard.txt") //put each lines of the txt file in the array "lines"
 	if err != nil {
 		log.Fatal(err)
@@ -50,6 +53,6 @@ func main() {
 	textArray := backline.BacklineSupport(text)
 
 	for _, words := range textArray {
-		ascii.PrintTextInAscii(words, lines)
+		ascii.PrintTextInAscii(words, lines, color)
 	}
 }
